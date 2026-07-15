@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Future Evolution - ประวัติและ 10 รุ่นยอดเยี่ยม</title>
+    <style>
+        :root {
+            --bg-color: #030712;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: rgba(59, 130, 246, 0.4);
+            --glow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(17, 24, 39, 0.5) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .audio-ctrl {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        .audio-ctrl:hover {
+            background: var(--primary);
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.15);
+            box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        header {
+            text-align: center;
+            padding: 100px 20px 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #60a5fa, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .section-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+        }
+        .section-panel:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: #fff;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.4);
+        }
+
+        .history-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-main);
+            margin-bottom: 20px;
+        }
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .top-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        .list-item {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .list-item:hover {
+            border-color: var(--accent);
+            box-shadow: var(--glow);
+            transform: translateX(10px);
+            background: rgba(30, 41, 59, 0.8);
+        }
+        .rank-num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            min-width: 60px;
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+        }
+        .item-img {
+            width: 160px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+        .list-item:hover .item-img {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+        .item-detail {
+            flex: 1;
+        }
+        .item-detail h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .item-detail p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .list-item { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .item-img { width: 100%; height: 160px; }
+            .rank-num { font-size: 1.8rem; }
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="audio-ctrl" id="audioBtn">
+        <span id="audio-icon">🎵</span> <span id="audio-text">เปิดเพลงพื้นหลัง</span>
+    </div>
+
+    <nav>
+        <div class="logo">TOYOTA FUTURE TECH</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">หน้าแรก & อันดับ</a>
+            <a href="sales.html">5 รุ่นขายดีที่สุด</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>TOYOTA FUTURE EVOLUTION</h1>
+        <p>ขับเคลื่อนสู่อนาคตด้วยนวัตกรรมระดับโลก</p>
+    </header>
+
+    <div class="container">
+        <section class="section-panel">
+            <h2 class="section-title">ประวัติความเป็นมาของ TOYOTA</h2>
+            <div class="history-text">
+                <p>เรื่องราวของ <span class="highlight">Toyota (โตโยต้า)</span> เริ่มต้นขึ้นในวิถีที่น่าอัศจรรย์ใจ โดยไม่ได้เริ่มจากอุตสาหกรรมเครื่องยนต์ แต่มีจุดกำเนิดจาก <span class="highlight">"เครื่องทอผ้าอัตโนมัติ"</span> ที่ประดิษฐ์โดย ซากิชิ โทโยดะ ในช่วงปลายศตวรรษที่ 19 ต่อมาในปี 1933 ลูกชายของเขา <span class="highlight">คิอิจิโร โทโยดะ (Kiichiro Toyoda)</span> ได้เล็งเห็นอนาคตของยานยนต์จึงได้ก่อตั้งแผนกรถยนต์ขึ้นมา และให้กำเนิดรถยนต์นั่งรุ่นแรกอย่าง <strong>Toyoda Model AA</strong> ในปี 1936</p>
+                <p>ในปี 1937 บริษัทได้เปลี่ยนชื่อเป็น <strong>Toyota Motor Corporation</strong> อย่างเป็นทางการ โดยเปลี่ยนจากตัว 'D' เป็นตัว 'T' เนื่องจากในภาษาญี่ปุ่นคำว่า Toyota เขียนด้วยเส้นพู่กัน 8 เส้น ซึ่งตามความเชื่อดั้งเดิมถือเป็นเลขมงคลอันสื่อถึงความเจริญรุ่งเรืองที่ขยายออกไปไม่มีที่สิ้นสุด</p>
+                <p>หลังผ่านพ้นวิกฤตการณ์สงครามโลกครั้งที่ 2 โตโยต้าได้ปฏิวัติวงการอุตสาหกรรมการผลิตด้วยการคิดค้นระบบ <span class="highlight">Toyota Production System (TPS)</span> หรือแนวคิดแบบลีนและระบบทันเวลาพอดี (Just-in-Time) ส่งผลให้รถยนต์มีมาตรฐานสูง ทนทานสูง ในต้นทุนที่เหมาะสม จนก้าวขึ้นสู่การเป็นผู้ผลิตรถยนต์ที่มียอดขายเป็นอันดับ 1 ของโลกในยุคปัจจุบัน</p>
+            </div>
+        </section>
+
+        <section class="section-panel">
+            <h2 class="section-title">10 รุ่นรถ Toyota ที่ดีที่สุดและสร้างชื่อเสียงระดับตำนาน</h2>
+            <div class="top-list">
+                
+                <div class="list-item">
+                    <div class="rank-num">01</div>
+                    <img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=400&q=80" alt="Toyota Corolla" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Corolla</h3>
+                        <p>รถยนต์นั่งพิมพ์นิยมที่สร้างสถิติมียอดขายสูงที่สุดในโลกตลอดกาลมากกว่า 50 ล้านคัน คือสัญลักษณ์ของความประหยัด คุ้มค่า และความทนทานในชีวิตประจำวัน</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">02</div>
+                    <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=400&q=80" alt="Toyota Hilux" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Hilux</h3>
+                        <p>รถกระบะสายพันธุ์แกร่งที่ขึ้นชื่อเรื่องความอึดระดับ "ไม่มีวันตาย" (Indestructible) ทั่วโลกต่างยอมรับในความสามารถในการบรรทุก ลุยได้ทุกสภาพภูมิประเทศ</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">03</div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_heHba6wHtN8fNXmSA7YP2q-diYoeAeTos2ZjcI0Rm5BRBHr4s5A41oL&s=10" alt="Toyota Land Cruiser" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Land Cruiser</h3>
+                        <p>ราชาแห่งการลุยออฟโรดระดับพรีเมียม ถือกำเนิดขึ้นจากรถยนต์ใช้งานทางทหาร ปัจจุบันเป็นสัญลักษณ์ของความหรูหราที่พร้อมพาผู้ขับขี่ข้ามผ่านอุปสรรคทุกรูปแบบอย่างปลอดภัย</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">04</div>
+                    <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?auto=format&fit=crop&w=400&q=80" alt="Toyota Supra" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Supra (Mk4)</h3>
+                        <p>ไอคอนแห่งยุค 90s สปอร์ตคาร์ที่โด่งดังจากภาพยนตร์ฮอลลีวูด มาพร้อมหัวใจหลักเครื่องยนต์ 2JZ-GTE ที่แข็งแกร่งและรองรับการแต่งระดับเกินพันแรงม้า</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">05</div>
+                    <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=400&q=80" alt="Toyota Prius" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Prius</h3>
+                        <p>รถยนต์คันแรกของโลกที่นำระบบขับเคลื่อนไฮบริด (Hybrid) มาผลิตจำหน่ายในเชิงพาณิชย์เป็นจำนวนมาก ถือเป็นผู้ปฏิวัติวงการยานยนต์รักษ์โลกอย่างแท้จริง</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">06</div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY5KFcf2JFkjoEBmmHo8qY3sH06IbJtBXKZbC7v_F8NdNggHxPG6mrMz-M&s=10" alt="Toyota Camry" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota Camry</h3>
+                        <p>รถยนต์ซีดานขนาดกลางที่เป็นตัวเลือกอันดับหนึ่งของนักธุรกิจและครอบครัว โดดเด่นด้วยห้องโดยสารที่กว้างขวาง ความนุ่มนวล และความน่าเชื่อถือในระยะยาว</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">07</div>
+                    <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=400&q=80" alt="Toyota AE86" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota AE86</h3>
+                        <p>รถส่งเต้าหู้ในตำนานจากอนิเมะ Initial D ตัวถังน้ำหนักเบาและขับเคลื่อนล้อหลัง ทำให้กลายเป็นขวัญใจตลอดกาลของเหล่านักดริฟต์และผู้รักความคลาสสิก</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">08</div>
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80" alt="Toyota 2000GT" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota 2000GT</h3>
+                        <p>ซูเปอร์คาร์คลาสสิกรุ่นแรกของญี่ปุ่นที่เปิดตัวในปี 1967 พิสูจน์ให้โลกเห็นว่าญี่ปุ่นสามารถผลิตรถสปอร์ตสมรรถนะสูงชั้นเลิศได้ ปัจจุบันมีมูลค่าประมูลที่สูงมาก</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">09</div>
+                    <img src="https://images.unsplash.com/photo-1606016159991-dfe4f2746ad5?auto=format&fit=crop&w=400&q=80" alt="Toyota RAV4" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota RAV4</h3>
+                        <p>ผู้บุกเบิกตลาดยานยนต์ Crossover SUV ยุคใหม่ ผสมผสานความนุ่มนวลสะดวกสบายแบบรถเก๋งเข้ากับความอเนกประสงค์ของรถยกสูง จนกลายเป็นหนึ่งในรถที่ขายดีที่สุดในปัจจุบัน</p>
+                    </div>
+                </div>
+
+                <div class="list-item">
+                    <div class="rank-num">10</div>
+                    <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=400&q=80" alt="Toyota MR2" class="item-img">
+                    <div class="item-detail">
+                        <h3>Toyota MR2</h3>
+                        <p>รถสปอร์ตเครื่องยนต์วางกลาง ขับเคลื่อนล้อหลังราคาย่อมเยา มอบประสบการณ์การขับขี่สไตล์รถแข่งดิบ ๆ สนุกสนานและเป็นเอกลักษณ์แห่งยุค 80s-90s</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Toyota Future Tech Conceptual Website. Created for Educational Purposes.</p>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioIcon = document.getElementById('audio-icon');
+        const audioText = document.getElementById('audio-text');
+
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().catch(e => console.log("Audio play blocked"));
+                audioIcon.textContent = "⏸️";
+                audioText.textContent = "ปิดเพลงพื้นหลัง";
+                audioBtn.style.background = "#2563eb";
+            } else {
+                audio.pause();
+                audioIcon.textContent = "🎵";
+                audioText.textContent = "เปิดเพลงพื้นหลัง";
+                audioBtn.style.background = "rgba(15, 23, 42, 0.8)";
+            }
+        });
+    </script>
+</body>
+</html>

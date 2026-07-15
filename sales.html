@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toyota Future Evolution - 5 รุ่นขายดีที่สุด</title>
+    <style>
+        :root {
+            --bg-color: #030712;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --primary: #3b82f6;
+            --accent: #60a5fa;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: rgba(59, 130, 246, 0.4);
+            --glow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(at 100% 0%, rgba(30, 58, 138, 0.3) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(17, 24, 39, 0.5) 0, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .audio-ctrl {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--glow);
+            transition: all 0.3s ease;
+        }
+        .audio-ctrl:hover {
+            background: var(--primary);
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 900;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+        }
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        .nav-links a.active, .nav-links a:hover {
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.15);
+            box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        header {
+            text-align: center;
+            padding: 8px 20px 40px;
+            margin-top: 60px;
+            animation: fadeInDown 1s ease-out;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #60a5fa, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        .table-container {
+            background: var(--panel-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            overflow-x: auto;
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            color: var(--text-main);
+            min-width: 800px;
+        }
+
+        th {
+            background: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            padding: 16px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+            vertical-align: middle;
+            transition: background 0.3s;
+        }
+
+        tr:hover td {
+            background: rgba(59, 130, 246, 0.08);
+        }
+
+        .car-img {
+            width: 150px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        tr:hover .car-img {
+            transform: scale(1.08);
+            border-color: var(--accent);
+            box-shadow: var(--glow);
+        }
+
+        .view-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            transition: all 0.3s ease;
+        }
+        .view-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+        }
+
+        .sales-vol {
+            font-family: monospace;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="audio-ctrl" id="audioBtn">
+        <span id="audio-icon">🎵</span> <span id="audio-text">เปิดเพลงพื้นหลัง</span>
+    </div>
+
+    <nav>
+        <div class="logo">TOYOTA FUTURE TECH</div>
+        <div class="nav-links">
+            <a href="index.html">หน้าแรก & อันดับ</a>
+            <a href="sales.html" class="active">5 รุ่นขายดีที่สุด</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>ตารางวิเคราะห์ 5 อันดับรถยอดขายสูงสุดในโลก</h1>
+    </header>
+
+    <div class="container">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>อันดับ</th>
+                        <th>ภาพจำลองโมเดล</th>
+                        <th>รุ่นรถยนต์ (Model)</th>
+                        <th>ยอดขายสะสมทั่วโลก (ประมาณการ)</th>
+                        <th>ลิงค์ข้อมูลเพิ่มเติม</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1</strong></td>
+                        <td><img src="https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&w=300&q=80" alt="Toyota Corolla" class="car-img"></td>
+                        <td><strong>Toyota Corolla</strong></td>
+                        <td class="sales-vol">> 50,000,000 คัน</td>
+                        <td><a href="https://youtu.be/E-4QIgjYbm8?si=yKrwu5zRBx2XCocW" target="_blank" class="view-btn">ข้อมูลเป็นทางการ</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2</strong></td>
+                        <td><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&w=300&q=80" alt="Toyota Hilux" class="car-img"></td>
+                        <td><strong>Toyota Hilux</strong></td>
+                        <td class="sales-vol">> 19,000,000 คัน</td>
+                        <td><a href="https://youtu.be/A9dLuOUG9OM?si=CsJAhLp1gApR6n7x" target="_blank" class="view-btn">ข้อมูลเป็นทางการ</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3</strong></td>
+                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWa7staVZ3Li86h2KXov_HVoNbvOKObkuWrlKDHajCow&s=10" alt="Toyota RAV4" class="car-img"></td>
+                        <td><strong>Toyota RAV4</strong></td>
+                        <td class="sales-vol">> 10,000,000 คัน</td>
+                        <td><a href="https://youtu.be/icVjHI1olMc?si=CXW1W1wzqvSbSXSo" target="_blank" class="view-btn">ข้อมูลเป็นทางการ</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>4</strong></td>
+                        <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY5KFcf2JFkjoEBmmHo8qY3sH06IbJtBXKZbC7v_F8NdNggHxPG6mrMz-M&s=10" alt="Toyota Camry" class="car-img"></td>
+                        <td><strong>Toyota Camry</strong></td>
+                        <td class="sales-vol">> 21,000,000 คัน</td>
+                        <td><a href="https://youtu.be/Uqi9P8mXwgA?si=jY39mTIdF5QbZok6" target="_blank" class="view-btn">ข้อมูลเป็นทางการ</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>5</strong></td>
+                        <td><img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=300&q=80" alt="Toyota Prius" class="car-img"></td>
+                        <td><strong>Toyota Prius</strong></td>
+                        <td class="sales-vol">> 6,000,000 คัน</td>
+                        <td><a href="https://youtu.be/sJBSVlqPlQY?si=vUKt5bj4gFmHCoTh" target="_blank" class="view-btn">ข้อมูลเป็นทางการ</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Toyota Future Tech Conceptual Website. Created for Educational Purposes.</p>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('bg-music');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioIcon = document.getElementById('audio-icon');
+        const audioText = document.getElementById('audio-text');
+
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().catch(e => console.log("Audio play blocked"));
+                audioIcon.textContent = "⏸️";
+                audioText.textContent = "ปิดเพลงพื้นหลัง";
+                audioBtn.style.background = "#2563eb";
+            } else {
+                audio.pause();
+                audioIcon.textContent = "🎵";
+                audioText.textContent = "เปิดเพลงพื้นหลัง";
+                audioBtn.style.background = "rgba(15, 23, 42, 0.8)";
+            }
+        });
+    </script>
+</body>
+</html>
